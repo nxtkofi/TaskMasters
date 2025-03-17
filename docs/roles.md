@@ -16,7 +16,7 @@
 ---
 
 #### **3. Backend (Spring Boot/.NET Core + PostgreSQL)**:  
-- **Główni deweloperzy**: **Michał**, **Patryk**, **Fabian**  
+- **Główni deweloperzy**: **Michał**, **Fabian**  
   - **Zadania**:  
       - Implementacja REST API (endpointy: użytkownicy, zespoły, zadania).  
       - Logika grywalizacji (obliczanie punktów, aktualizacja leaderboardu).  
