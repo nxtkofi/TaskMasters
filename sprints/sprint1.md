@@ -32,7 +32,7 @@
 |---------|------|----------|--------|  
 | **1. Wybór technologii backendowej** | Dyskusja i głosowanie nad językiem i bazą danych. | DONE |  
 | **2. Konfiguracja repozytorium backendowego** | Inicjalizacja podfolderu na GH, dodanie podstawowych zależności. | TODO |  
-| **3. Konfiguracja repozytorium frontendowego** | Next.js + Redux + Tailwind + ShadCN. Instrukcja uruchomienia. | TODO |  
+| **3. Konfiguracja repozytorium frontendowego** | Next.js + Redux + Tailwind + ShadCN. Instrukcja uruchomienia. | DONE |  
 | **4. Dokumentacja projektu** | Plik `README.md` z opisem projektu, wymaganiami, stackiem. | DONE |  
 | **5. Diagram architektury** | Prosty schemat pokazujący komponenty systemu. | TODO |  
 
