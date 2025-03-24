@@ -5,10 +5,10 @@
 ---
 
 ## 🎯 **Cele Sprintu**  
-1. Zdefiniować **wymagania funkcjonalne** w formie user stories z kryteriami akceptacji.  
-2. Stworzyć **diagram przypadków użycia** (Use Case Diagram).  
-3. Opracować **projekt bazy danych** (schemat tabel + relacje).  
-4. Udokumentować **endpointy API** (w formie np. OpenAPI/Swagger).  
+- [ ] #3 Zdefiniować **wymagania funkcjonalne** w formie user stories z kryteriami akceptacji.  
+- [ ] #4 Stworzyć **diagram przypadków użycia** (Use Case Diagram).  
+- [ ] #5 Opracować **projekt bazy danych** (schemat tabel + relacje).  
+- [ ] #6 Udokumentować **endpointy API** (w formie np. OpenAPI/Swagger).  
 
 ---
 
