@@ -51,7 +51,7 @@
 #### Kryteria akceptacji:
 - **Given** że członek zespołu jest na stronie „Zadania”,  
   **When** użytkownik wprowadzi tytuł, opis, deadline i punkty zadania,  
-  **Then** zadanie zostanie zapisane w systemie, a punkty zostaną przypisane do zespołu.
+  **Then** zadanie zostanie przesłane do Team Lidera do akceptacji.
 
 - **Given** że zadanie zostało przypisane,  
   **When** zadanie jest wykonane,  
@@ -66,24 +66,7 @@
 
 ---
 
-## 4. Powiązanie zadania z Pull Request w GitHubie
-
-**Jako** programista, **chcę** powiązać zadanie z Pull Request w GitHubie, **aby** automatycznie śledzić postęp.
-
-#### Kryteria akceptacji:
-- **Given** że zadanie zostało utworzone,  
-  **When** użytkownik wprowadzi link do Pull Request w formularzu zadania,  
-  **Then** system automatycznie zmieni status zadania na „Done” po zamknięciu PR.
-
-#### Techniczne:
-- Integracja z **GitHub API**.
-
-#### Endpointy:
-- **POST /api/tasks/pr** – Powiązanie zadania w GitHubie.
-
----
-
-## 5. Wyświetlanie rankingu zespołów
+## 4. Wyświetlanie rankingu zespołów
 
 **Jako** gracz, **chcę** widzieć ranking zespołów, **aby** wiedzieć, ile punktów brakuje nam do wygranej.
 
@@ -100,7 +83,7 @@
 
 ---
 
-## 6. Powiadomienia o nowych zadaniach
+## 5. Powiadomienia o nowych zadaniach
 
 **Jako** członek zespołu, **chcę** otrzymywać powiadomienia o nowych zadaniach, **aby** nie przegapić nowych wyzwań.
 
@@ -115,7 +98,7 @@
 
 ---
 
-## 7. System odznak za osiągnięcia
+## 6. System odznak za osiągnięcia
 
 **Jako** gracz, **chcę** zdobywać odznaki za osiągnięcia, **aby** czuć się zmotywowany do lepszej pracy.
 
@@ -133,7 +116,7 @@
 
 ---
 
-## 8. Historia postępów i wykonanych zadań
+## 7. Historia postępów i wykonanych zadań
 
 **Jako** użytkownik, **chcę** widzieć historię wykonanych zadań, **aby** śledzić swoje postępy.
 
@@ -150,7 +133,7 @@
 
 ---
 
-## 9. Rejestrowanie postępu użytkownika
+## 8. Rejestrowanie postępu użytkownika
 
 **Jako** lider zespołu, **chcę** mieć dostęp do raportów o postępie członków zespołu, **aby** móc monitorować ich efektywność.
 
@@ -165,3 +148,34 @@
 #### Endpointy:
 - **GET /api/progress-report** – Pobieranie raportu postępów członków zespołu.
 
+## 9. Zarządzanie organizacją
+
+**Jako** szef firmy, **chcę** założyć organizację, do której mogę dodać Team Liderów oraz "graczy" (pracowników, developerów), **aby** skutecznie zarządzać strukturą zespołów.
+
+#### Kryteria akceptacji:
+- **Given** że użytkownik jest szefem firmy,  
+  **When** tworzy organizację i dodaje do niej Team Liderów oraz pracowników,  
+  **Then** organizacja zostaje zapisana w systemie, a użytkownicy mają odpowiednie role.
+
+## 10. Tworzenie projektów
+
+**Jako** szef firmy, **chcę** móc założyć projekt w imieniu organizacji, **aby** strukturyzować zadania zespołów.
+
+#### Kryteria akceptacji:
+- **Given** że użytkownik jest szefem firmy,  
+  **When** tworzy nowy projekt przypisany do organizacji,  
+  **Then** projekt zostaje zapisany w systemie i dostępny dla Team Liderów i pracowników.
+
+## 11. Tworzenie zadań
+
+**Jako** Team Lider, **chcę** tworzyć zadania dla mojego zespołu, **aby** organizować pracę zespołu.
+
+**Jako** developer, **chcę** móc tworzyć zadania, **aby** dodawać nowe prace do wykonania, jednak wymagające akceptacji lidera.
+
+#### Kryteria akceptacji:
+- **Given** że Team Lider tworzy zadanie,  
+  **When** wpisuje tytuł, opis, deadline i punkty,  
+  **Then** zadanie zostaje zapisane i przypisane do projektu.
+- **Given** że developer tworzy zadanie,  
+  **When** wpisuje tytuł, opis, deadline i punkty,  
+  **Then** zadanie zostaje przesłane do Team Lidera do akceptacji.
