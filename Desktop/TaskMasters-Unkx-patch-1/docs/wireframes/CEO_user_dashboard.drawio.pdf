@@ -1,0 +1,94 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36" version="26.2.13">
+  <diagram name="Page-1" id="GVpZ3o7EesZViNeO699B">
+    <mxGraphModel dx="1908" dy="981" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="wtTA2CKGqjkGjXqoJXHZ-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="10" y="130" width="830" height="700" as="geometry" />
+        </mxCell>
+        <mxCell id="wtTA2CKGqjkGjXqoJXHZ-2" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="1" vertex="1">
+          <mxGeometry x="10" y="190" width="830" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="wtTA2CKGqjkGjXqoJXHZ-3" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
+          <mxGeometry x="30" y="140" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="wtTA2CKGqjkGjXqoJXHZ-5" value="Projects" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;" parent="1" vertex="1">
+          <mxGeometry x="450" y="145" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wtTA2CKGqjkGjXqoJXHZ-6" value="Teams" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;" parent="1" vertex="1">
+          <mxGeometry x="540" y="145" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wtTA2CKGqjkGjXqoJXHZ-7" value="Organization" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;" parent="1" vertex="1">
+          <mxGeometry x="640" y="145" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wtTA2CKGqjkGjXqoJXHZ-8" value="Settings" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;" parent="1" vertex="1">
+          <mxGeometry x="740" y="145" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wtTA2CKGqjkGjXqoJXHZ-9" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="440" y="260" width="360" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="wtTA2CKGqjkGjXqoJXHZ-10" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="260" width="360" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="wtTA2CKGqjkGjXqoJXHZ-13" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="660" width="770" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="wtTA2CKGqjkGjXqoJXHZ-14" value="Projects Overview" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="40" y="220" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wtTA2CKGqjkGjXqoJXHZ-15" value="User Management" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="440" y="220" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wtTA2CKGqjkGjXqoJXHZ-18" value="Notifications" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="40" y="620" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wtTA2CKGqjkGjXqoJXHZ-19" value="" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="440" y="580" width="370" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wtTA2CKGqjkGjXqoJXHZ-16" value="Create Project" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="555" y="595" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wtTA2CKGqjkGjXqoJXHZ-28" value="Project Name&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; Status" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="60" y="275" width="320" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="wtTA2CKGqjkGjXqoJXHZ-29" value="" style="rounded=1;whiteSpace=wrap;html=1;arcSize=7;" parent="1" vertex="1">
+          <mxGeometry x="60" y="330" width="320" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="wtTA2CKGqjkGjXqoJXHZ-30" value="Task Name&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Assigned Team Leader&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="70" y="350" width="300" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wtTA2CKGqjkGjXqoJXHZ-31" value="Task Name&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Assigned Team Leader&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="70" y="410" width="300" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wtTA2CKGqjkGjXqoJXHZ-32" value="Task Name&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Assigned Team Leader&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="70" y="520" width="300" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wtTA2CKGqjkGjXqoJXHZ-33" value="Task Name&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Assigned Team Leader&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="70" y="465" width="300" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wtTA2CKGqjkGjXqoJXHZ-34" value="&amp;nbsp; &amp;nbsp; &amp;nbsp;Full Name&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Role&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Manage&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="460" y="275" width="320" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="wtTA2CKGqjkGjXqoJXHZ-35" value="&amp;nbsp; &amp;nbsp; &amp;nbsp;Full Name&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Role&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Manage&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="460" y="335" width="320" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="wtTA2CKGqjkGjXqoJXHZ-36" value="&lt;div style=&quot;&quot;&gt;&lt;br&gt;&lt;/div&gt;Notifications&lt;div&gt;&lt;br/&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="60" y="680" width="730" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="wtTA2CKGqjkGjXqoJXHZ-38" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;Notifications&lt;div&gt;&lt;br/&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="60" y="740" width="730" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="wtTA2CKGqjkGjXqoJXHZ-40" value="" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="440" y="500" width="370" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wtTA2CKGqjkGjXqoJXHZ-17" value="Add Team" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=19;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="565" y="515" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="wtTA2CKGqjkGjXqoJXHZ-41" value="&amp;nbsp; &amp;nbsp; &amp;nbsp;Full Name&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Role&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;Manage&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="460" y="402.5" width="320" height="45" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
