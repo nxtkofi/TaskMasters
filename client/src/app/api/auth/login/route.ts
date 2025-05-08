@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 
 export async function POST(request: Request) {
-  const { email, password } = await request.json()
+  const { username, password } = await request.json()
 
   try {
     const response = await fetch('http://localhost:8080/auth/login', {
@@ -9,7 +9,7 @@ export async function POST(request: Request) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ username, password }),
     })
 
     const data = await response.json()

@@ -8,10 +8,9 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card'
 import { Alert, AlertDescription } from '@/components/ui/alert'
-
 export default function AuthForm({ type }: { type: 'login' | 'register' }) {
   const [username, setUsername] = useState('')
-  const [email, setEmail] = useState('')
+  const [email, setEmail] = useState('') // Ta zmienna już nie będzie używana, więc ją usuwamy
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [name, setName] = useState('')
@@ -35,11 +34,10 @@ export default function AuthForm({ type }: { type: 'login' | 'register' }) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
-          email, 
+          username,  // Zmieniamy z email na username
           password,
           ...(type === 'register' && { 
             name,
-            username,
           }) 
         }),
       })
@@ -99,14 +97,14 @@ export default function AuthForm({ type }: { type: 'login' | 'register' }) {
           )}
           
           <div className="space-y-2">
-            <Label htmlFor="email">Adres email</Label>
+            <Label htmlFor="username">Nazwa użytkownika</Label>  {/* Zmieniamy na "username" */}
             <Input
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              id="username"   
+              type="text"
+              value={username} 
+              onChange={(e) => setUsername(e.target.value)}
               required
-              placeholder="twoj@email.com"
+              placeholder="jankowalski123" 
             />
           </div>
           
