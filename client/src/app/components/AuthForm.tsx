@@ -6,11 +6,23 @@ import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card'
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter
+} from '@/components/ui/card'
 import { Alert, AlertDescription } from '@/components/ui/alert'
-export default function AuthForm({ type }: { type: 'login' | 'register' }) {
+
+interface AuthFormProps {
+  type: 'login' | 'register'
+}
+
+export default function AuthForm(props: AuthFormProps) {
+  const { type } = props
   const [username, setUsername] = useState('')
-  const [email, setEmail] = useState('') // Ta zmienna już nie będzie używana, więc ją usuwamy
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [name, setName] = useState('')
@@ -24,31 +36,45 @@ export default function AuthForm({ type }: { type: 'login' | 'register' }) {
     setError('')
 
     try {
-      // Walidacja hasła
       if (type === 'register' && password !== confirmPassword) {
         throw new Error('Hasła nie są identyczne')
       }
 
-      const endpoint = type === 'login' ? 'login' : 'register'
-      const response = await fetch(`/api/auth/${endpoint}`, {
+
+      const response = await fetch(`http://localhost:8080/auth/${type}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          username,  // Zmieniamy z email na username
+        body: JSON.stringify({
+          username,
           password,
-          ...(type === 'register' && { 
-            name,
-          }) 
-        }),
+          ...(type === 'register' && { name })
+        })
       })
 
-      const data = await response.json()
-      if (!response.ok) throw new Error(data.message || 'Logowanie nie powiodło się')
-      
-      localStorage.setItem('authToken', data.token)
+      const text = await response.text()
+
+      if (!response.ok) {
+        let message = 'Wystąpił problem'
+        try {
+          const errorData = JSON.parse(text)
+          message = errorData.message || message
+        } catch {}
+        throw new Error(message)
+      }
+
+      let token = ''
+      try {
+        token = text.trim()
+      } catch (err) {
+        throw new Error('Nie udało się odczytać tokena z odpowiedzi')
+      }
+
+      if (!token) throw new Error('Brak tokena w odpowiedzi')
+
+      localStorage.setItem('authToken', token)
       router.push('/dashboard')
     } catch (err) {
-      setError('Wystąpił błąd podczas logowania')
+      setError((err as Error).message || 'Wystąpił błąd podczas logowania')
     } finally {
       setIsLoading(false)
     }
@@ -61,53 +87,39 @@ export default function AuthForm({ type }: { type: 'login' | 'register' }) {
           {type === 'login' ? 'Witaj ponownie' : 'Załóż konto'}
         </CardTitle>
         <CardDescription>
-          {type === 'login' 
-            ? 'Wprowadź swoje dane, aby się zalogować' 
+          {type === 'login'
+            ? 'Wprowadź swoje dane, aby się zalogować'
             : 'Wypełnij formularz, aby się zarejestrować'}
         </CardDescription>
       </CardHeader>
-      
+
       <form onSubmit={handleSubmit}>
         <CardContent className="space-y-4">
           {type === 'register' && (
-            <>
-              <div className="space-y-2">
-                <Label htmlFor="name">Imię i nazwisko</Label>
-                <Input
-                  id="name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                  placeholder="Jan Kowalski"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="username">Nazwa użytkownika</Label>
-                <Input
-                  id="username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  required
-                  minLength={3}
-                  placeholder="jankowalski123"
-                />
-              </div>
-            </>
+            <div className="space-y-2">
+              <Label htmlFor="name">Imię i nazwisko</Label>
+              <Input
+                id="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+                placeholder="Jan Kowalski"
+              />
+            </div>
           )}
-          
+
           <div className="space-y-2">
-            <Label htmlFor="username">Nazwa użytkownika</Label>  {/* Zmieniamy na "username" */}
+            <Label htmlFor="username">Nazwa użytkownika</Label>
             <Input
-              id="username"   
-              type="text"
-              value={username} 
+              id="username"
+              value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
-              placeholder="jankowalski123" 
+              minLength={3}
+              placeholder="jankowalski123"
             />
           </div>
-          
+
           <div className="space-y-2">
             <Label htmlFor="password">Hasło</Label>
             <Input
@@ -135,14 +147,14 @@ export default function AuthForm({ type }: { type: 'login' | 'register' }) {
               />
             </div>
           )}
-          
+
           {error && (
             <Alert variant="destructive" className="mt-4">
               <AlertDescription>{error}</AlertDescription>
             </Alert>
           )}
         </CardContent>
-        
+
         <CardFooter className="flex flex-col gap-4 mt-6">
           <Button type="submit" className="w-full" disabled={isLoading}>
             {isLoading ? (
@@ -156,7 +168,7 @@ export default function AuthForm({ type }: { type: 'login' | 'register' }) {
               'Zarejestruj się'
             )}
           </Button>
-          
+
           <div className="text-center text-sm">
             {type === 'login' ? (
               <span>
