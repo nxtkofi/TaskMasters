@@ -19,9 +19,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public boolean authenticate(String username, String password) {
-        User user = userRepository.findByUsername(username);
-        return user != null && passwordEncoder.matches(password, user.getPassword());
-    }    
-    
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
 }
