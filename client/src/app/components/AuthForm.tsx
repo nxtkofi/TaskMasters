@@ -3,17 +3,11 @@
 import { Loader2 } from 'lucide-react'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import axios from 'axios'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter
-} from '@/components/ui/card'
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 
 interface AuthFormProps {
@@ -21,64 +15,71 @@ interface AuthFormProps {
 }
 
 export default function AuthForm(props: AuthFormProps) {
-  const { type } = props
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
-  const [name, setName] = useState('')
-  const [error, setError] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
-  const router = useRouter()
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
-    setError('')
-
-    try {
-      if (type === 'register' && password !== confirmPassword) {
-        throw new Error('Hasła nie są identyczne')
-      }
-
-
-      const response = await fetch(`http://localhost:8080/auth/${type}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          username,
-          password,
-          ...(type === 'register' && { name })
-        })
-      })
-
-      const text = await response.text()
-
-      if (!response.ok) {
-        let message = 'Wystąpił problem'
-        try {
-          const errorData = JSON.parse(text)
-          message = errorData.message || message
-        } catch {}
-        throw new Error(message)
-      }
-
-      let token = ''
+    const { type } = props
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
+    const [name, setName] = useState('')
+    const [error, setError] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
+    const router = useRouter()
+  
+    const handleSubmit = async (e: React.FormEvent) => {
+      e.preventDefault()
+      setIsLoading(true)
+      setError('')
+  
       try {
-        token = text.trim()
+        if (type === 'register' && password !== confirmPassword) {
+          throw new Error('Hasła nie są identyczne')
+        }
+  
+        const response = await axios.post(
+          `http://localhost:8080/auth/${type}`,
+          {
+            username,
+            password,
+            ...(type === 'register' && { name })
+          },
+          {
+            transformResponse: [data => data],
+            validateStatus: () => true
+          }
+        )
+  
+        const text = response.data
+  
+        if (response.status >= 400) {
+          let message = 'Wystąpił problem'
+          try {
+            const errorData = JSON.parse(text)
+            message = errorData.message || message
+          } catch {}
+          throw new Error(message)
+        }
+  
+        const token = text.trim()
+        if (!token) throw new Error('Brak tokena w odpowiedzi')
+  
+        /* 
+         * TODO: Zastąpić właściwym rozwiązaniem
+         * Bezpieczne opcje:
+         * 1. NextAuth.js (https://next-auth.js.org/)
+         * 2. HTTP-only cookies + CSRF protection
+         * 3. React Context + pamięć sesji
+         * 
+         * NIEBEZPIECZNE (do usunięcia):
+         * localStorage.setItem('authToken', token)
+         */
+  
+        // Tymczasowe przekierowanie po udanym logowaniu
+        router.push('/dashboard')
       } catch (err) {
-        throw new Error('Nie udało się odczytać tokena z odpowiedzi')
+        setError((err as Error).message || 'Wystąpił błąd podczas logowania')
+      } finally {
+        setIsLoading(false)
       }
-
-      if (!token) throw new Error('Brak tokena w odpowiedzi')
-
-      localStorage.setItem('authToken', token)
-      router.push('/dashboard')
-    } catch (err) {
-      setError((err as Error).message || 'Wystąpił błąd podczas logowania')
-    } finally {
-      setIsLoading(false)
     }
-  }
 
   return (
     <Card className="w-full max-w-md mx-4">
