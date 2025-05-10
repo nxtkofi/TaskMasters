@@ -21,7 +21,6 @@ export default function Dashboard() {
   const router = useRouter()
 
   useEffect(() => {
-    // Sprawdź czy użytkownik jest zalogowany
     const checkAuth = async () => {
       try {
         const token = localStorage.getItem('authToken')
@@ -63,12 +62,11 @@ export default function Dashboard() {
   }
 
   if (!user) {
-    return null // Przekierowanie już się odbywa w useEffect
+    return null
   }
 
   return (
     <div className="container mx-auto px-4 py-8">
-      {/* Nagłówek z informacjami o użytkowniku */}
       <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-2xl font-bold">Witaj, {user.name}</h1>
@@ -80,7 +78,6 @@ export default function Dashboard() {
         </Button>
       </div>
 
-      {/* Główna tabela - pełna szerokość */}
       <div className="mb-8">
         <Card>
           <CardHeader>
@@ -134,7 +131,6 @@ export default function Dashboard() {
         </Card>
       </div>
 
-      {/* Dolna sekcja */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Card>
           <CardHeader>
