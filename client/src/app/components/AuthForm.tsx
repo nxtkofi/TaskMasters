@@ -9,77 +9,68 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card'
 import { Alert, AlertDescription } from '@/components/ui/alert'
+import { API_AUTH } from '@/app/constants/api'
 
 interface AuthFormProps {
   type: 'login' | 'register'
 }
 
-export default function AuthForm(props: AuthFormProps) {
-    const { type } = props
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
-    const [confirmPassword, setConfirmPassword] = useState('')
-    const [name, setName] = useState('')
-    const [error, setError] = useState('')
-    const [isLoading, setIsLoading] = useState(false)
-    const router = useRouter()
-  
-    const handleSubmit = async (e: React.FormEvent) => {
-      e.preventDefault()
-      setIsLoading(true)
-      setError('')
-  
-      try {
-        if (type === 'register' && password !== confirmPassword) {
-          throw new Error('Hasła nie są identyczne')
-        }
-  
-        const response = await axios.post(
-          `http://localhost:8080/auth/${type}`,
-          {
-            username,
-            password,
-            ...(type === 'register' && { name })
-          },
-          {
-            transformResponse: [data => data],
-            validateStatus: () => true
-          }
-        )
-  
-        const text = response.data
-  
-        if (response.status >= 400) {
-          let message = 'Wystąpił problem'
-          try {
-            const errorData = JSON.parse(text)
-            message = errorData.message || message
-          } catch {}
-          throw new Error(message)
-        }
-  
-        const token = text.trim()
-        if (!token) throw new Error('Brak tokena w odpowiedzi')
-  
-        /* 
-         * TODO: Zastąpić właściwym rozwiązaniem
-         * Bezpieczne opcje:
-         * 1. NextAuth.js (https://next-auth.js.org/)
-         * 2. HTTP-only cookies + CSRF protection
-         * 3. React Context + pamięć sesji
-         * 
-         * NIEBEZPIECZNE (do usunięcia):
-         * localStorage.setItem('authToken', token)
-         */
-  
-        // Tymczasowe przekierowanie po udanym logowaniu
-        router.push('/dashboard')
-      } catch (err) {
-        setError((err as Error).message || 'Wystąpił błąd podczas logowania')
-      } finally {
-        setIsLoading(false)
+export default function AuthForm({ type }: AuthFormProps) {
+  const [formData, setFormData] = useState({
+    email: '',
+    username: '',
+    password: '',
+    ...(type === 'register' && { 
+      name: '',
+      confirmPassword: '' 
+    })
+  })
+  const [error, setError] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target
+    setFormData(prev => ({ ...prev, [id]: value }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsLoading(true)
+    setError('')
+
+    try {
+      if (type === 'register' && formData.password !== formData.confirmPassword) {
+        throw new Error('Hasła nie są identyczne')
       }
+
+      const response = await axios.post(
+        `${API_AUTH}/${type}`,
+        {
+          email: formData.email,
+          username: formData.username,
+          password: formData.password,
+          ...(type === 'register' && { name: formData.name })
+        }
+      )
+
+      const token = response.data.trim()
+      if (!token) throw new Error('Brak tokena w odpowiedzi')
+
+      /* 
+       * TODO: Zastąpić właściwym rozwiązaniem
+       * Bezpieczne opcje:
+       * 1. NextAuth.js (https://next-auth.js.org/)
+       * 2. HTTP-only cookies + CSRF protection
+       * 3. React Context + pamięć sesji
+       */
+      router.push('/dashboard')
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Wystąpił nieoczekiwany błąd')
+    } finally {
+      setIsLoading(false)
     }
+  }
 
   return (
     <Card className="w-full max-w-md mx-4">
@@ -96,13 +87,25 @@ export default function AuthForm(props: AuthFormProps) {
 
       <form onSubmit={handleSubmit}>
         <CardContent className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="email">Email</Label>
+            <Input
+              id="email"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              placeholder="twoj@email.com"
+            />
+          </div>
+
           {type === 'register' && (
             <div className="space-y-2">
               <Label htmlFor="name">Imię i nazwisko</Label>
               <Input
                 id="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={formData.name}
+                onChange={handleChange}
                 required
                 placeholder="Jan Kowalski"
               />
@@ -113,8 +116,8 @@ export default function AuthForm(props: AuthFormProps) {
             <Label htmlFor="username">Nazwa użytkownika</Label>
             <Input
               id="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={formData.username}
+              onChange={handleChange}
               required
               minLength={3}
               placeholder="jankowalski123"
@@ -126,8 +129,8 @@ export default function AuthForm(props: AuthFormProps) {
             <Input
               id="password"
               type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={formData.password}
+              onChange={handleChange}
               required
               minLength={6}
               placeholder="••••••••"
@@ -140,8 +143,8 @@ export default function AuthForm(props: AuthFormProps) {
               <Input
                 id="confirmPassword"
                 type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
+                value={formData.confirmPassword}
+                onChange={handleChange}
                 required
                 minLength={6}
                 placeholder="••••••••"
