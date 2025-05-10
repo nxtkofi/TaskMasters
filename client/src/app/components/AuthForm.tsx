@@ -67,12 +67,8 @@ export default function AuthForm(props: AuthFormProps) {
          * 1. NextAuth.js (https://next-auth.js.org/)
          * 2. HTTP-only cookies + CSRF protection
          * 3. React Context + pamięć sesji
-         * 
-         * NIEBEZPIECZNE (do usunięcia):
-         * localStorage.setItem('authToken', token)
          */
-  
-        // Tymczasowe przekierowanie po udanym logowaniu
+
         router.push('/dashboard')
       } catch (err) {
         setError((err as Error).message || 'Wystąpił błąd podczas logowania')
