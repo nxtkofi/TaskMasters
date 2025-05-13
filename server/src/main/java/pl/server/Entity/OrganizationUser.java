@@ -2,7 +2,7 @@ package pl.server.Entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import pl.server.Enums.UserRoles;
+import pl.server.Enums.UserRole;
 
 import java.io.Serializable;
 
@@ -21,7 +21,7 @@ public class OrganizationUser {
     private User user;
 
     @Enumerated(EnumType.STRING)
-    private UserRoles.UserRole role;
+    private UserRole role;
 
 
     @Embeddable
