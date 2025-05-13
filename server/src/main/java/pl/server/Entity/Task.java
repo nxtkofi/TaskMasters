@@ -1,7 +1,9 @@
-package pl.server;
+package pl.server.Entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import pl.server.Enums.UserRoles;
+
 
 @Entity
 @Data
@@ -15,7 +17,7 @@ public class Task {
     private int points;
 
     @Enumerated(EnumType.STRING)
-    private TaskStatus status;
+    private UserRoles.TaskStatus status;
 
     @ManyToOne
     private Project project;
@@ -26,7 +28,4 @@ public class Task {
     @ManyToOne
     private User createdBy;
 
-    public enum TaskStatus {
-        Pending, Done
-    }
 }

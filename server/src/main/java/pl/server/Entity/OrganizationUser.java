@@ -1,7 +1,8 @@
-package pl.server;
+package pl.server.Entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import pl.server.Enums.UserRoles;
 
 import java.io.Serializable;
 
@@ -20,11 +21,8 @@ public class OrganizationUser {
     private User user;
 
     @Enumerated(EnumType.STRING)
-    private UserRole role;
+    private UserRoles.UserRole role;
 
-    public enum UserRole {
-        Member, TeamLeader
-    }
 
     @Embeddable
     @Data

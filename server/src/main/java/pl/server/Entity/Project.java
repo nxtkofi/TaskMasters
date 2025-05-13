@@ -1,12 +1,13 @@
-package pl.server;
+package pl.server.Entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+
 import java.util.Set;
 
 @Entity
 @Data
-public class Organization {
+public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -14,8 +15,11 @@ public class Organization {
     private String name;
 
     @ManyToOne
+    private Organization organization;
+
+    @ManyToOne
     private User createdBy;
 
-    @OneToMany(mappedBy = "organization", cascade = CascadeType.ALL)
-    private Set<OrganizationUser> users;
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
+    private Set<Task> tasks;
 }

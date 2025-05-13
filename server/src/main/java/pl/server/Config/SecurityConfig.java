@@ -15,17 +15,17 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable()) // Disable CSRF protection
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**").permitAll() // Allow unauthenticated access to /auth/**
-                        .requestMatchers("/organizations/**").hasRole("CEO") // Restrict /organizations/** to CEO role
-                        .anyRequest().authenticated() // All other requests require authentication
+                        .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers("/organizations/**").hasRole("CEO")
+                        .anyRequest().authenticated()
                 );
         return http.build();
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(); // Use BCrypt for password encoding
+        return new BCryptPasswordEncoder();
     }
 }

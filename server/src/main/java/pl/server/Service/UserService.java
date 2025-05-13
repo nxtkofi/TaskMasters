@@ -1,7 +1,7 @@
 package pl.server.Service;
 
 import pl.server.Repositories.UserRepository;
-import pl.server.User;
+import pl.server.Entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

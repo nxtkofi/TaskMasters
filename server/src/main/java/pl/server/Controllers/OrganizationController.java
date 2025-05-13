@@ -1,6 +1,6 @@
 package pl.server.Controllers;
 
-import pl.server.Organization;
+import pl.server.Entity.Organization;
 import pl.server.Service.OrganizationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
