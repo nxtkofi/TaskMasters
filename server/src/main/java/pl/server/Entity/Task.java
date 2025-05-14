@@ -1,10 +1,8 @@
 package pl.server.Entity;
-
-import jakarta.persistence.*;
-import lombok.Data;
-import pl.server.Enums.TaskStatus;
-import pl.server.Enums.UserRole;
-
+//
+//import jakarta.persistence.*;
+//import lombok.Data;
+//import pl.server.Enums.TaskStatus;
 
 @Entity
 @Data
