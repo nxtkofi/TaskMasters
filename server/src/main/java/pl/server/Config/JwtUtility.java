@@ -1,17 +1,18 @@
 package pl.server.Config;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.stereotype.Component;
-
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+import org.springframework.stereotype.Component;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+
 @Component
-public class JwtUtil {
+public class JwtUtility {
 
     private final String SECRET_KEY = "your-256-bit-secret-key-1234567890abcdef"; // Replace with a secure key
     private final long JWT_EXPIRATION = 1000 * 60 * 60 * 10; // 10 hours

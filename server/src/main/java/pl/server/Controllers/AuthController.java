@@ -1,15 +1,19 @@
 package pl.server.Controllers;
 
-import pl.server.Service.UserService;
-import pl.server.Entity.User;
-import pl.server.Config.JwtUtil;
-import pl.server.Enums.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import pl.server.Config.JwtUtility;
+import pl.server.Entity.User;
+import pl.server.Enums.UserRole;
+import pl.server.Service.UserService;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -19,7 +23,7 @@ public class AuthController {
     private UserService userService;
 
     @Autowired
-    private JwtUtil jwtUtil;
+    private JwtUtility jwtUtil;
 
     @Autowired
     private AuthenticationManager authenticationManager;
