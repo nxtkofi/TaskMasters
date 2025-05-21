@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
@@ -14,8 +15,11 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @Component
 public class JwtUtility {
 
-    private final String SECRET_KEY = "your-256-bit-secret-key-1234567890abcdef"; // Replace with a secure key
-    private final long JWT_EXPIRATION = 1000 * 60 * 60 * 10; // 10 hours
+    @Value("${jwt.secret}")
+    private String SECRET_KEY;
+
+    @Value("${jwt.expiration}")
+    private long JWT_EXPIRATION;
 
     public String generateToken(String email, String role) {
         Map<String, Object> claims = new HashMap<>();

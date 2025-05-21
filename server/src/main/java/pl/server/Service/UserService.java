@@ -24,6 +24,9 @@ public class UserService implements UserDetailsService {
         if (user == null || user.getEmail() == null || user.getPassword() == null) {
             throw new IllegalArgumentException("User, email, or password must not be null");
         }
+        if (userRepository.findByEmail(user.getEmail()) != null) {
+            throw new IllegalArgumentException("User with email " + user.getEmail() + " already exists");
+        }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
@@ -41,7 +44,7 @@ public class UserService implements UserDetailsService {
         return org.springframework.security.core.userdetails.User
                 .withUsername(user.getEmail())
                 .password(user.getPassword())
-                .authorities("ROLE_" + user.getRole())
+                .authorities("ROLE_" + user.getRole().getRoleName())
                 .build();
     }
 }
